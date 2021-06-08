@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
-import config from '@/config';
+import config from '../config/index';
 import { useHistory } from 'react-router';
 
 const AuthProvider = (props: PropsWithChildren<{}>) => {
+  const history = useHistory();
   const onRedirectCallback = (appState: any) => {
-    const history = useHistory();
     history.push(appState?.returnTo || window.location.pathname);
   };
 
@@ -15,7 +15,9 @@ const AuthProvider = (props: PropsWithChildren<{}>) => {
       clientId={config.auth0ClientId}
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
-    ></Auth0Provider>
+    >
+      {props.children}
+    </Auth0Provider>
   );
 };
 

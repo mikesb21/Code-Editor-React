@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/store/hooks';
+import { useAppSelector } from '../store/hooks';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { PropsWithChildren } from 'react';
 import { appColors, darkModeColors } from './colors';

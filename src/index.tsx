@@ -5,14 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './auth/AuthProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ReduxProvider from './store/ReduxProvider';
+import CustomThemeProvider from './theme/CustomThemeProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </Router>
+    <ReduxProvider>
+      <Router>
+        <AuthProvider>
+          <CustomThemeProvider>
+            <App />
+          </CustomThemeProvider>
+        </AuthProvider>
+      </Router>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
